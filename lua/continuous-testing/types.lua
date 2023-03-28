@@ -13,5 +13,5 @@
 ---@field framework_setup FrameworkSetup
 ---@field project_override table<string, FrameworkSetup>
 
----@alias SupportedFrameworks "rspec" | "vitest"
+---@alias SupportedFrameworks "rspec" | "vitest" | "jest"
 ---@alias TestState "passed" | "failed" | "pending"
