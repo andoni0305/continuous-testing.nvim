@@ -130,10 +130,19 @@ local generate_tests_state = function(bufnr)
 end
 
 M.testing_dialog_message = function(bufnr, line_position)
-    local message = state(bufnr).test_results[line_position].failureMessages
+    local results = state(bufnr).test_results[line_position]
 
-    if message == nil then
+    if results == nil then
+        return { "No test results found for this line" }
+    end
+
+    local message = results.failureMessages
+
+    local next = next
+    if message == nil or next(message) == nil then
         message = { "No failure found" }
+    else
+        message = vim.split(message[1], "\n")
     end
 
     return message
