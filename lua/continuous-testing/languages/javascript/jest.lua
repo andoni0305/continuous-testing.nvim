@@ -105,8 +105,10 @@ local generate_tests_state = function(bufnr)
             end
         end
 
-        local line = line_number() + 1
-        test_table[line] = test
+        if line_number() then
+            local line = line_number() + 1
+            test_table[line] = test
+        end
     end
 
     table_util.merge_table(state(bufnr), { test_results = test_table })
