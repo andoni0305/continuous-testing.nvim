@@ -95,6 +95,10 @@ require("continuous-testing").setup {
 
 #### Vitest (Javascript, Typescript ...)
 
+#### Jest (Javascript, Typescript, ...)
+
+- Partially supported; missing the root_pattern support
+
 ## 🏋️‍♀️ Usage
 
 Multiple test files can be attached to the continuous testing plugin.
