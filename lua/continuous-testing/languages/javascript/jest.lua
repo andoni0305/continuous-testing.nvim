@@ -105,8 +105,9 @@ local generate_tests_state = function(bufnr)
             end
         end
 
-        if line_number() then
-            local line = line_number() + 1
+        local number = line_number()
+        if number then
+            local line = number + 1
             test_table[line] = test
         end
     end
