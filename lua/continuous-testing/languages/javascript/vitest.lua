@@ -24,7 +24,7 @@ local M = {}
 ---@field duration string source Vitest
 ---@field failureMessages string[] source Vitest
 
-local ts_query_tests = vim.treesitter.parse_query(
+local ts_query_tests = vim.treesitter.query.parse(
     "javascript",
     [[
     (expression_statement
@@ -46,7 +46,7 @@ M.initialize_state = function(bufnr)
     for id, node in ts_query_tests:iter_captures(root, bufnr, 0, -1) do
         local name = ts_query_tests.captures[id]
         if name == "str" then
-            local title = vim.treesitter.query.get_node_text(node, bufnr)
+            local title = vim.treesitter.get_node_text(node, bufnr)
             -- {start row, start col, end row, end col}
             local range = { node:range() }
             state(bufnr).test_results[range[1] + 1] = {

@@ -4,7 +4,7 @@ local format = require("continuous-testing.utils.format")
 local M = {}
 
 M.set_start_signs = function(bufnr)
-    local ts_query_tests = vim.treesitter.parse_query(
+    local ts_query_tests = vim.treesitter.query.parse(
         "ruby",
         [[
         (call

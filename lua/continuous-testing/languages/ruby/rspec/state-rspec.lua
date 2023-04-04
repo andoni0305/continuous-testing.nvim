@@ -92,7 +92,7 @@ M.set_initial_state = function(bufnr)
     local buffer_test_state = state(bufnr)
     ---@cast buffer_test_state RspecBufferTestState
 
-    local ts_query_tests = vim.treesitter.parse_query(
+    local ts_query_tests = vim.treesitter.query.parse(
         "ruby",
         [[
         (call
@@ -107,7 +107,7 @@ M.set_initial_state = function(bufnr)
     for id, node in ts_query_tests:iter_captures(root, bufnr, 0, -1) do
         local name = ts_query_tests.captures[id]
         if name == "title" then
-            local title = vim.treesitter.query.get_node_text(node, bufnr)
+            local title = vim.treesitter.get_node_text(node, bufnr)
             local range = { node:range() }
             buffer_test_state.test_results[range[1] + 1] = {
                 status = "pending",
